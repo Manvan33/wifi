@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template_string
+import os 
 
 app = Flask(__name__)
 
-
+port=int(os.environ.get('PORT', 5000))
+         
 TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -81,4 +83,4 @@ def index():
     return render_template_string(TEMPLATE, user_ip=user_ip, user_agent=user_agent)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=port)
